@@ -19,7 +19,7 @@ class TestTeam_null(unittest.TestCase):
         # negative test case
         test_str = 'my SSN is 123456789'
         result = analyze_text(test_str, ['US_SSN'])
-        self.assertTrue(result)
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':
