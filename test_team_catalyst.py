@@ -20,6 +20,18 @@ class TestTeam_catalyst(unittest.TestCase):
 
     def test_email_address(self):
         """Test EMAIL_ADDRESS functionality"""
+        #Positive Test Case
+        my_email = "My email is jmjenkins@ncat.edu"
+        result = analyze_text(my_email, ["EMAIL_ADDRESS"])
+        print(result)
+        self.assertEqual(result[0].entity_type, "EMAIL_ADDRESS")
+        
+        #Negative Test Case
+        my_email = "My email is jmjenkinsncat.edu"
+        result = analyze_text(my_email, ["EMAIL_ADDRESS"])
+        print(result)
+        self.assertEqual(result, [])
+
 
     def test_medical_license(self):
         """Test MEDICAL_LICENSE functionality"""
