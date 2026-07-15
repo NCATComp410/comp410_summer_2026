@@ -20,6 +20,23 @@ class TestTeam_a(unittest.TestCase):
 
     def test_us_driver_license(self):
         """Test US_DRIVER_LICENSE functionality"""
+        # Positive test
+        text = "My driver's license number is A1234567"
+        results = analyze_text(text, entity_list=["US_DRIVER_LICENSE"])
+
+        self.assertTrue(
+            any(result.entity_type == "US_DRIVER_LICENSE" for result in results),
+            msg=f"Expected US_DRIVER_LICENSE to be detected in: {text}"
+        )
+
+        # Negative test
+        text = "Hello, my name is John Smith."
+        results = analyze_text(text, entity_list=["US_DRIVER_LICENSE"])
+
+        self.assertFalse(
+            any(result.entity_type == "US_DRIVER_LICENSE" for result in results),
+            msg=f"Did not expect US_DRIVER_LICENSE to be detected in: {text}"
+        )
 
     def test_us_itin(self):
         """Test US_ITIN functionality"""
