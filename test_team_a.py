@@ -40,6 +40,15 @@ class TestTeam_a(unittest.TestCase):
 
     def test_us_itin(self):
         """Test US_ITIN functionality"""
+        # positive test case
+        test_str = 'My ITIN is 900-70-1234'
+        result = analyze_text(test_str, ['US_ITIN'])
+        self.assertEqual(result[0].entity_type, 'US_ITIN')
+
+        # negative test case
+        test_str = 'My ITIN is 800-60-1234'
+        result = analyze_text(test_str, ['US_ITIN'])
+        self.assertFalse(result)
 
     def test_us_passport(self):
         """Test US_PASSPORT functionality"""
