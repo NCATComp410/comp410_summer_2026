@@ -43,7 +43,15 @@ class TestTeam_a(unittest.TestCase):
 
     def test_us_passport(self):
         """Test US_PASSPORT functionality"""
+        #positive test case
+        test_str = "my passport is A12345678"
+        result = analyze_text(test_str, ['US_PASSPORT'])
+        self.assertEqual(result[0].entity_type, 'US_PASSPORT')
 
+            #negative test case
+        test_str = "my passport is 987654"
+        result = analyze_text(test_str, ['US_PASSPORT'])
+        self.assertFalse(result)
 
 if __name__ == '__main__':
     unittest.main()
