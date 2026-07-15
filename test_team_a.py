@@ -17,15 +17,19 @@ class TestTeam_a(unittest.TestCase):
 
     def test_us_bank_number(self):
         """Test US_BANK_NUMBER functionality"""
+
     # positive test case
-        result = 8 <= len("12345678901234567") <= 17 and "12345678901234567".isdigit()
-        print(f"Result: {result}")
-        assert result
+        my_bank = "12345678901234567"
+        result = analyze_text(my_bank, ["US_BANK_NUMBER"])
+        print(result)
+        self.assertEqual(result[0].entity_type, "US_BANK_NUMBER")
 
     # negative test case
-        result = 8 <= len("1234567") <= 17 and "1234567".isdigit()
-        print(f"Result: {result}")
-        assert not result
+        my_bank= "1234567"
+        result = analyze_text(my_bank, ["US_BANK_NUMBER"])
+        print(result)
+        self.assertFalse(result)
+
 
     def test_us_driver_license(self):
         """Test US_DRIVER_LICENSE functionality"""
