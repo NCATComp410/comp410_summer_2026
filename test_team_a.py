@@ -26,7 +26,7 @@ class TestTeam_a(unittest.TestCase):
         results_neg = analyze_text(text_neg, entity_list=["URL"])
         self.assertFalse(
             any(result.entity_type == "URL" for result in results_neg),
-            msg=f"Expected URL to be detected in: {text_neg}"
+            msg=f"No URL expected in: {text_neg}"
         )
 
     def test_us_bank_number(self):
