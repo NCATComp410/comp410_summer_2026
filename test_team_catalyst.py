@@ -17,6 +17,15 @@ class TestTeam_catalyst(unittest.TestCase):
 
     def test_date_time(self):
         """Test DATE_TIME functionality"""
+         # positive test case
+        test_str = 'The meeting is on July 20, 2026 at 3:30 PM.'
+        result = analyze_text(test_str, ['DATE_TIME'])
+        self.assertEqual(result[0].entity_type, 'DATE_TIME')
+
+        # negative test case
+        test_str = 'There is no date or time in this sentence.'
+        result = analyze_text(test_str, ['DATE_TIME'])
+        self.assertFalse(result)
 
     def test_email_address(self):
         """Test EMAIL_ADDRESS functionality"""
