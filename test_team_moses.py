@@ -17,6 +17,15 @@ class TestTeam_moses(unittest.TestCase):
 
     def test_it_fiscal_code(self):
         """Test IT_FISCAL_CODE functionality"""
+        # positive test case
+        test_str = 'my fiscal code is VRNGNY07D68C351V'
+        result = analyze_text(test_str, ['IT_FISCAL_CODE'])
+        self.assertEqual(result[0].entity_type, 'IT_FISCAL_CODE')
+
+        # negative test case
+        test_str = 'my fiscal code is 1234567890123456'
+        result = analyze_text(test_str, ['IT_FISCAL_CODE'])
+        self.assertFalse(result)
 
     def test_it_identity_card(self):
         """Test IT_IDENTITY_CARD functionality"""
