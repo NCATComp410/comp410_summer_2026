@@ -2,7 +2,6 @@
 import unittest
 from pii_scan import analyze_text, show_aggie_pride  # noqa
 
-
 class TestTeam_a(unittest.TestCase):
     """Test team a PII functions"""
     def test_show_aggie_pride(self):
@@ -24,6 +23,21 @@ class TestTeam_a(unittest.TestCase):
 
     def test_url(self):
         """Test URL functionality"""
+        # Positive test case
+        text_pos = "You can view documentation in https://github.com"
+        results_pos = analyze_text(text_pos, entity_list=["URL"])
+        self.assertTrue(
+            any(result.entity_type == "URL" for result in results_pos),
+            msg=f"Expected URL to be detected in: {text_pos}"
+        )
+
+        # Negative test case
+        text_neg = "Nothing to see here"
+        results_neg = analyze_text(text_neg, entity_list=["URL"])
+        self.assertFalse(
+            any(result.entity_type == "URL" for result in results_neg),
+            msg=f"No URL expected in: {text_neg}"
+        )
 
     def test_us_bank_number(self):
         """Test US_BANK_NUMBER functionality"""
