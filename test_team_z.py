@@ -24,6 +24,17 @@ class TestTeam_z(unittest.TestCase):
     def test_uk_nino(self):
         """Test UK_NINO functionality"""
 
+    # Positive Test Case
+
+        test_str = "The National Insurance number is AB123456C."
+        result = analyze_text(test_str, ['UK_NINO'])
+        self.assertEqual(result[0].entity_type, 'UK_NINO')
+
+    # Negative Test Case (invalid format)
+
+        test_str = "The National Insurance number is AB12345C."
+        result = analyze_text(test_str, ['UK_NINO'])
+        self.assertFalse(result)
 
 if __name__ == '__main__':
     unittest.main()
