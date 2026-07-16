@@ -57,6 +57,14 @@ class TestTeam_moses(unittest.TestCase):
 
     def test_it_passport(self):
         """Test IT_PASSPORT functionality"""
+        test_str = "My Italian passport number is YA1234567"
+        result = analyze_text(test_str, ["IT_PASSPORT"])
+        self.assertEqual(result[0].entity_type, "IT_PASSPORT")
+
+        #negative case
+        test_str = "Hello, my name is John Smith."
+        result = analyze_text(test_str, ["IT_PASSPORT"])
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':
