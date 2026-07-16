@@ -14,6 +14,13 @@ class TestTeam_moses(unittest.TestCase):
 
     def test_it_driver_license(self):
         """Test IT_DRIVER_LICENSE functionality"""
+        test_str = "My Italian driver's license number is AB1234567C"
+        result = analyze_text(test_str, ["IT_DRIVER_LICENSE"])
+        self.assertEqual(result[0].entity_type, 'IT_DRIVER_LICENSE')
+
+        test_str = "Hello, my name is John Smith"
+        result = analyze_text(test_str, ["IT_DRIVER_LICENSE"])
+        self.assertFalse(result)
 
     def test_it_fiscal_code(self):
         """Test IT_FISCAL_CODE functionality"""
