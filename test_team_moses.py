@@ -20,6 +20,31 @@ class TestTeam_moses(unittest.TestCase):
 
     def test_it_identity_card(self):
         """Test IT_IDENTITY_CARD functionality"""
+        valid_cards = [
+            "CA12345AB",
+            "AB54321CD",
+        ]
+        for card in valid_cards:
+            with self.subTest(card=card):
+                text = f"Carta d'identità: {card}"
+                results = analyze_text(text, ["IT_IDENTITY_CARD"])
+                self.assertEqual(len(results), 1)
+                self.assertEqual(results[0].entity_type, "IT_IDENTITY_CARD")
+                self.assertEqual(text[results[0].start:results[0].end], card)
+                self.assertGreater(results[0].score, 0)
+
+        invalid_cards = [
+            "XZ12",
+            "12345ABCD",
+            "ABCDE1234",
+        ]
+        for card in invalid_cards:
+            with self.subTest(card=card):
+                results = analyze_text(
+                    f"Carta d'identità: {card}",
+                    ["IT_IDENTITY_CARD"],
+                )
+                self.assertEqual(results, [])
 
     def test_it_passport(self):
         """Test IT_PASSPORT functionality"""
