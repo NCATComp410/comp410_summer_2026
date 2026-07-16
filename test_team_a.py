@@ -18,6 +18,19 @@ class TestTeam_a(unittest.TestCase):
     def test_us_bank_number(self):
         """Test US_BANK_NUMBER functionality"""
 
+    # positive test cases
+        my_bank = "12345678901234567"
+        result = analyze_text(my_bank, ["US_BANK_NUMBER"])
+        print(result)
+        self.assertEqual(result[0].entity_type, "US_BANK_NUMBER")
+
+    # negative test cases
+        my_bank= "1234567"
+        result = analyze_text(my_bank, ["US_BANK_NUMBER"])
+        print(result)
+        self.assertFalse(result)
+
+
     def test_us_driver_license(self):
         """Test US_DRIVER_LICENSE functionality"""
         # Positive test
