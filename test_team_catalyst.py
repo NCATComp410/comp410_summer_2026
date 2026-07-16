@@ -23,6 +23,15 @@ class TestTeam_catalyst(unittest.TestCase):
 
     def test_medical_license(self):
         """Test MEDICAL_LICENSE functionality"""
+        # positive test case
+        test_str = "My DEA certificate number is AB1234563"
+        result = analyze_text(test_str, ["MEDICAL_LICENSE"])
+        self.assertEqual(result[0].entity_type, "MEDICAL_LICENSE")
+
+        # negative test case
+        test_str = "My DEA certificate number is AB1234567"
+        result = analyze_text(test_str, ["MEDICAL_LICENSE"])
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':
