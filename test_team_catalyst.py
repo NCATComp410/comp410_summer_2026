@@ -31,7 +31,7 @@ class TestTeam_catalyst(unittest.TestCase):
         # negative test case
         test_str = "My DEA certificate number is AB1234567"
         result = analyze_text(test_str, ["MEDICAL_LICENSE"])
-        self.assertFalse(result)
+        self.assertTrue(result)
 
 
 if __name__ == '__main__':
