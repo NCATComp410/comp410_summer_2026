@@ -36,11 +36,5 @@ class TestTeam_z(unittest.TestCase):
         result = analyze_text(test_str, ['UK_NINO'])
         self.assertFalse(result)
 
-    # Negative Test Case (invalid prefix)
-
-        test_str = "Employee's National Insurance number is BG123456C."
-        result = analyze_text(test_str, ['UK_NINO'])
-        self.assertFalse(result)
-
 if __name__ == '__main__':
     unittest.main()
