@@ -11,6 +11,16 @@ class TestTeam_a(unittest.TestCase):
 
     def test_it_vat_code(self):
         """Test IT_VAT_CODE functionality"""
+        # Positive test case
+        test = "My VAT Code (partita iva) is 06363391001"
+        result = analyze_text(test, ["IT_VAT_CODE"])
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].entity_type, "IT_VAT_CODE")
+
+        # Negative test case
+        test = "My VAT Code (partita iva) is 12345678901"
+        result = analyze_text(test, ["IT_VAT_CODE"])
+        self.assertEqual(len(result), 0)
 
     def test_url(self):
         """Test URL functionality"""
