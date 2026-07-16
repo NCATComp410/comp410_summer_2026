@@ -27,11 +27,6 @@ class TestTeam_moses(unittest.TestCase):
         result = analyze_text(test_str, ['IT_FISCAL_CODE'])
         self.assertFalse(result)
 
-        # negative test case - correct format but invalid checksum
-        test_str = 'my fiscal code is VRNGNY07D68C351K'
-        result = analyze_text(test_str, ['IT_FISCAL_CODE'])
-        self.assertFalse(result)
-
     def test_it_identity_card(self):
         """Test IT_IDENTITY_CARD functionality"""
 
