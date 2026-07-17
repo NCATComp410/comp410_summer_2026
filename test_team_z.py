@@ -11,13 +11,21 @@ class TestTeam_z(unittest.TestCase):
 
     def test_phone_number(self):
         """Test PHONE_NUMBER functionality"""
-        #positive test case
-        test_str = 'my phone number is 123-456-7890'
+        #Positive Test Case
+        test_str = "Call me at (555) 123-4567."
         result = analyze_text(test_str, ['PHONE_NUMBER'])
         self.assertEqual(result[0].entity_type, 'PHONE_NUMBER')
-
-        #negative test case
-        test_str = 'my phone number is 123456'
+    
+        test_str = "My number is 555-123-4567."
+        result = analyze_text(test_str, ['PHONE_NUMBER'])
+        self.assertEqual(result[0].entity_type, 'PHONE_NUMBER')
+    
+        # Negative Test Cases
+        test_str = "The code is 12345."
+        result = analyze_text(test_str, ['PHONE_NUMBER'])
+        self.assertFalse(result)
+    
+        test_str = "Call 111-111-1111 for spam."
         result = analyze_text(test_str, ['PHONE_NUMBER'])
         self.assertFalse(result)
 
