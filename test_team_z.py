@@ -29,7 +29,6 @@ class TestTeam_z(unittest.TestCase):
         result = analyze_text(test_str, ['PHONE_NUMBER'])
         self.assertFalse(result)
 
-
     def test_location(self):
         """Test LOCATION functionality"""
 
