@@ -20,6 +20,16 @@ class TestTeam_z(unittest.TestCase):
 
     def test_uk_nhs(self):
         """Test UK_NHS functionality"""
+        # Positive Test Case
+        test_str= "Patient's NHS number is 943 476 5919."
+        result = analyze_text(test_str,['UK_NHS'])
+        self.assertEqual(result[0].entity_type, 'UK_NHS')
+
+
+         # Negative Test Case
+        test_str= "Patient's NHS number is 1234567890."
+        result = analyze_text(test_str,['UK_NHS'])
+        self.assertFalse(result)
 
     def test_uk_nino(self):
         """Test UK_NINO functionality"""
