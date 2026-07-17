@@ -11,6 +11,15 @@ class TestTeam_z(unittest.TestCase):
 
     def test_phone_number(self):
         """Test PHONE_NUMBER functionality"""
+        #positive test case
+        test_str = 'my phone number is 123-456-7890'
+        result = analyze_text(test_str, ['PHONE_NUMBER'])
+        self.assertEqual(result[0].entity_type, 'PHONE_NUMBER')
+
+        #negative test case
+        test_str = 'my phone number is 123456'
+        result = analyze_text(test_str, ['PHONE_NUMBER'])
+        self.assertFalse(result)
 
     def test_location(self):
         """Test LOCATION functionality"""

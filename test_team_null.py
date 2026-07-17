@@ -21,6 +21,5 @@ class TestTeam_null(unittest.TestCase):
         result = analyze_text(test_str, ['US_SSN'])
         self.assertFalse(result)
 
-
 if __name__ == '__main__':
     unittest.main()
