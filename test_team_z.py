@@ -29,7 +29,7 @@ class TestTeam_z(unittest.TestCase):
         self.assertEqual(result[0].entity_type, 'LOCATION')
 
         #negative test case
-        test_str = 'The meeting begins at four in the evening'
+        test_str = 'The meeting begins at four in the evening.'
         result = analyze_text(test_str, ['LOCATION'])
         self.assertFalse(result)
 
