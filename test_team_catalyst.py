@@ -11,6 +11,15 @@ class TestTeam_catalyst(unittest.TestCase):
 
     def test_credit_card(self):
         """Test CREDIT_CARD functionality"""
+        # positive test case
+        test_str = 'My credit card number is 4111-1111-1111-1111.'
+        result = analyze_text(test_str, ['CREDIT_CARD'])
+        self.assertEqual(result[0].entity_type, 'CREDIT_CARD')
+
+        # negative test case
+        test_str = 'My credit card number is 4111-1111-1111-1112.'
+        result = analyze_text(test_str, ['CREDIT_CARD'])
+        self.assertFalse(result)
 
     def test_crypto(self):
         """Test CRYPTO functionality"""
