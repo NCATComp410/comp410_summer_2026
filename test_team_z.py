@@ -11,6 +11,9 @@ class TestTeam_z(unittest.TestCase):
 
     def test_phone_number(self):
         """Test PHONE_NUMBER functionality"""
+        test_str = 'my phone number is 123-456-7890'
+        result = analyze_text(test_str, ['PHONE_NUMBER'])
+        print(result)
 
     def test_location(self):
         """Test LOCATION functionality"""
