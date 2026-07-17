@@ -18,6 +18,25 @@ class TestTeam_z(unittest.TestCase):
     def test_person(self):
         """Test PERSON functionality"""
 
+    # Positive Test Case
+        test_str = "The patient's name is John Smith."
+        result = analyze_text(test_str, ["PERSON"])
+        self.assertTrue(
+            any(entity.entity_type == "PERSON" for entity in result)
+        )
+
+    #additional positive test case
+        test_str = "Dr. Emily Carter entered the room"
+        result = analyze_text(test_str, ["PERSON"])
+        self.assertTrue(
+            any(entity.entity_type == "PERSON" for entity in result)
+        )
+
+    # Negative Test Case (invalid format)
+        test_str = "The computer is located beside the blue chair"
+        result = analyze_text(test_str, ["PERSON"])
+        self.assertFalse(result)
+
     def test_uk_nhs(self):
         """Test UK_NHS functionality"""
 
