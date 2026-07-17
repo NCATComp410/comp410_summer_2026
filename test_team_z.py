@@ -23,6 +23,15 @@ class TestTeam_z(unittest.TestCase):
 
     def test_location(self):
         """Test LOCATION functionality"""
+        #postive test case
+        test_str = 'I traveled to Chicago, Illinois last weekend.'
+        result = analyze_text(test_str, ['LOCATION'])
+        self.assertEqual(result[0].entity_type, 'LOCATION')
+
+        #negative test case
+        test_str = 'The meeting begins at four in the evening.'
+        result = analyze_text(test_str, ['LOCATION'])
+        self.assertFalse(result)
 
     def test_person(self):
         """Test PERSON functionality"""
