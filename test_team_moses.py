@@ -11,6 +11,15 @@ class TestTeam_moses(unittest.TestCase):
 
     def test_ip_address(self):
         """Test IP_ADDRESS functionality"""
+        # positive test case
+        test_str = "My IP address is 192.168.1.1"
+        result = analyze_text(test_str, ["IP_ADDRESS"])
+        self.assertTrue(result)
+        self.assertEqual(result[0].entity_type, 'IP_ADDRESS')
+        # negative test case
+        test_str = "Hello, my name is John Smith"
+        result = analyze_text(test_str, ["IP_ADDRESS"])
+        self.assertFalse(result)
 
     def test_it_driver_license(self):
         """Test IT_DRIVER_LICENSE functionality"""
